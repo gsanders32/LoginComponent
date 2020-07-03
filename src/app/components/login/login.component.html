@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="container offset-4 col-4">  
+    <div class="form-group">
+        <br>
+    </div>
+    <form [formGroup]="formLogin">
+        <h1>Login</h1>
+        <hr>
+    <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" placeholder="Email" formControlName="inputEmail">
+        <div *ngIf="formLogin.controls['inputEmail'].hasError('required') && formLogin.controls['inputEmail'].touched" class="alert alert-danger">
+            Email Address is required
+        </div>
+        <div *ngIf="formLogin.controls['inputEmail'].hasError('email')" class="alert alert-danger">
+            Email Address is invalid
+        </div>
+        <div *ngIf="formLogin.controls['inputEmail'].hasError('maxlength')" class="alert alert-danger">
+            Email Address length must be less than or equal to 100
+        </div>
+        <div *ngIf="formLogin.controls['inputEmail'].hasError('minlength')" class="alert alert-danger">
+            Email Address length must be greater than or equal to  6
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" placeholder="Password" formControlName="inputPassword">
+        <div *ngIf="formLogin.controls['inputPassword'].hasError('required') && formLogin.controls['inputPassword'].touched" class="alert alert-danger">
+            Password is required
+        </div>
+        <div *ngIf="formLogin.controls['inputPassword'].hasError('maxlength')" class="alert alert-danger">
+            Password length must be less than or equal to 100
+        </div>
+        <div *ngIf="formLogin.controls['inputPassword'].hasError('minlength')" class="alert alert-danger">
+            Password length must be greater than or equal to  5
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mr-2" [disabled]="!formLogin.valid">Login</button>
+    <button class="btn btn-success" routerLink="/register" >Register</button>   
+</form>
+</div>
+
