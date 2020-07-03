@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AuthorizationModule } from './authorization/authorization.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthorizationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
