@@ -1,1 +1,144 @@
-<p>user-profile works!</p>
+<div class="container offset-1 col-10">
+    <div class="form-group">
+        <br>
+    </div> 
+    <form [formGroup]="formUserProfile" (ngSubmit)="submit()">
+        <h1>User Profile</h1>
+            <hr>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputFName">First Name</label>
+                <input type="text" class="form-control" placeholder="First Name" formControlName="inputFName">
+                <div *ngIf="formUserProfile.controls['inputFName'].hasError('required') && formUserProfile.controls['inputFName'].touched" class="alert alert-danger">
+                    First Name is required
+                </div>
+                <div *ngIf="formUserProfile.controls['inputFName'].hasError('maxlength')" class="alert alert-danger">
+                    First Name length must be less than or equal to 30
+                </div>
+                <div *ngIf="formUserProfile.controls['inputFName'].hasError('minlength')" class="alert alert-danger">
+                    First Name length must be greater than or equal to  2
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputLName">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name" formControlName="inputLName">
+                <div *ngIf="formUserProfile.controls['inputLName'].hasError('required') && formUserProfile.controls['inputLName'].touched" class="alert alert-danger">
+                    Last Name is required
+                </div>
+                <div *ngIf="formUserProfile.controls['inputLName'].hasError('maxlength')" class="alert alert-danger">
+                    Last Name length must be less than or equal to 30
+                </div>
+                <div *ngIf="formUserProfile.controls['inputLName'].hasError('minlength')" class="alert alert-danger">
+                    Last Name length must be greater than or equal to  2
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputDOB">Date of Birth</label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd"
+                           name="dp"  ngbDatepicker #d="ngbDatepicker" formControlName="inputDOB">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="formUserProfile.controls['inputDOB'].hasError('required') && formUserProfile.controls['inputDOB'].touched" class="alert alert-danger">
+                    Date of Birth is required
+                </div>
+            </div>
+
+        </div>
+        <div formGroupName="address">
+            <div class="form-group">
+                <label for="inputStreet">Address</label>
+                <input type="text" class="form-control" placeholder="1234 Main St" formControlName="inputStreet">
+                <div *ngIf="formUserProfile['controls'].address['controls'].inputStreet.hasError('required') && formUserProfile['controls'].address['controls'].inputStreet.touched" class="alert alert-danger">
+                    Street is required
+                </div>
+                <div *ngIf="formUserProfile['controls'].address['controls'].inputStreet.hasError('maxlength')" class="alert alert-danger">
+                    Street length must be less than or equal to 30
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" placeholder="Lubbock" formControlName="inputCity">
+                    <div *ngIf="formUserProfile['controls'].address['controls'].inputCity.hasError('required') && formUserProfile['controls'].address['controls'].inputCity.touched" class="alert alert-danger">
+                        City is required
+                    </div>
+                    <div *ngIf="formUserProfile['controls'].address['controls'].inputCity.hasError('maxlength')" class="alert alert-danger">
+                        City length must be less than or equal to 30
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <input type="text" class="form-control" placeholder="Texas" formControlName="inputState">
+                    <div *ngIf="formUserProfile['controls'].address['controls'].inputState.hasError('required') && formUserProfile['controls'].address['controls'].inputState.touched" class="alert alert-danger">
+                        State is required
+                    </div>
+                    <div *ngIf="formUserProfile['controls'].address['controls'].inputState.hasError('maxlength')" class="alert alert-danger">
+                        State length must be less than or equal to 30
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" placeholder="79411" formControlName="inputZip">
+                    <div *ngIf="formUserProfile['controls'].address['controls'].inputZip.hasError('required') && formUserProfile['controls'].address['controls'].inputZip.touched" class="alert alert-danger">
+                        Zip is required
+                    </div>
+                    <div *ngIf="formUserProfile['controls'].address['controls'].inputZip.hasError('pattern')" class="alert alert-danger">
+                        Zip format is five digits
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputFood">Favorite Food</label>
+                <input type="text" class="form-control" placeholder="Pizza" formControlName="inputFood">
+                <div *ngIf="formUserProfile.controls['inputFood'].hasError('required') && formUserProfile.controls['inputFood'].touched" class="alert alert-danger">
+                    Favorite Food is required
+                </div>
+                <div *ngIf="formUserProfile.controls['inputFood'].hasError('maxlength')" class="alert alert-danger">
+                    Favorite Food length must be less than or equal to 30
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputMovie">Favorite Movie</label>
+                <input type="text" class="form-control" placeholder="Big Trouble in Little China" formControlName="inputMovie">
+                <div *ngIf="formUserProfile.controls['inputMovie'].hasError('required') && formUserProfile.controls['inputMovie'].touched" class="alert alert-danger">
+                    Favorite Movie is required
+                </div>
+                <div *ngIf="formUserProfile.controls['inputMovie'].hasError('maxlength')" class="alert alert-danger">
+                    Favorite Movie length must be less than or equal to 30
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputArtist">Favorite Artist</label>
+                <input type="text" class="form-control" placeholder="Vincent Van Gogh" formControlName="inputArtist">
+                <div *ngIf="formUserProfile.controls['inputArtist'].hasError('required') && formUserProfile.controls['inputArtist'].touched" class="alert alert-danger">
+                    Favorite Artist is required
+                </div>
+                <div *ngIf="formUserProfile.controls['inputArtist'].hasError('maxlength')" class="alert alert-danger">
+                    Favorite Artist length must be less than or equal to 30
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputHobbies">Favorite Hobbies</label>
+                <input type="text" class="form-control" placeholder="RC Planes" formControlName="inputHobbies">
+                <div *ngIf="formUserProfile.controls['inputHobbies'].hasError('required') && formUserProfile.controls['inputHobbies'].touched" class="alert alert-danger">
+                    Favorite Hobbies is required
+                </div>
+                <div *ngIf="formUserProfile.controls['inputHobbies'].hasError('maxlength')" class="alert alert-danger">
+                    Favorite Hobbies length must be less than or equal to 30
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mr-2" [disabled]="!formUserProfile.valid">Save</button>
+        <!-- <button type="button" class="btn btn-success" (click)="updateUser()">Update</button> -->
+    </form>
+</div>

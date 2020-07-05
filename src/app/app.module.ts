@@ -7,6 +7,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AuthorizationModule } from './authorization/authorization.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { AuthorizationModule } from './authorization/authorization.module';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    AuthorizationModule
+    AuthorizationModule,
+    NgbModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
